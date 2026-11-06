@@ -1,0 +1,15 @@
+diff --git a/models/colorfm_l.py b/models/colorfm_l.py
+index 6834a15..3f67051 100644
+--- a/models/colorfm_l.py
++++ b/models/colorfm_l.py
+@@ -15,7 +15,9 @@ from typing import Sequence, Tuple, Union, Callable
+ import torch
+ import torch.nn as nn
+ import torch.utils.checkpoint
+-from lightning.pytorch.utilities.rank_zero import rank_zero_warn
++# Local single-process inference integration: use Python's warning helper,
++# avoiding Lightning's unrelated training/audio-metrics dependency tree.
++from warnings import warn as rank_zero_warn
+ from torch.nn.init import trunc_normal_
+ from models.layers import Mlp, PatchEmbed, SwiGLUFFNFused, MemEffAttention, NestedTensorBlock as Block
+ import numpy as np

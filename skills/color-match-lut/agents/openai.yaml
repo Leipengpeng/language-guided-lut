@@ -1,0 +1,4 @@
+interface:
+  display_name: "Language-Guided LUT"
+  short_description: "转译中文或语音转写，用压缩小图生成参考，支持双图追色和多算法对比"
+  default_prompt: "使用 $color-match-lut 告诉我怎么提供照片和描述调色意图，给我一句可以照着说的例子。"

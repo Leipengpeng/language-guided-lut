@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>一对多 · 多对一追色画廊</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#000;color:#f5f5f5}
+body{height:100vh;height:100dvh;overflow:hidden;font:500 22px/1.4 system-ui,"Microsoft YaHei",sans-serif}
+button,select,a{touch-action:manipulation}button,select{min-height:54px;border:2px solid #777;border-radius:7px;background:#222;color:#fff;font:600 23px/1.25 system-ui,"Microsoft YaHei",sans-serif}
+button{padding:8px 16px;cursor:pointer}button:hover,button[aria-pressed=true]{background:#444;border-color:#ddd}select{padding:8px 12px;max-width:100%;font:600 23px/1.25 system-ui,"Microsoft YaHei",sans-serif}
+header{min-height:84px;display:flex;align-items:center;gap:10px;padding:12px;border-bottom:1px solid #444;background:#000;white-space:nowrap}
+#group{flex:1;min-width:160px}#modeOne,#modeMany{flex-shrink:0}#methodControl{display:flex;align-items:center;gap:8px;font-size:22px}#method{width:245px}#counter{font-size:22px;color:#ccc;flex-shrink:0}
+#workspace{--cols:3;display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:12px;padding:12px;height:calc(100dvh - var(--header-height,84px));min-height:0}
+#anchor{grid-column:1;min-width:0;overflow-y:auto;scrollbar-width:thin;padding-bottom:14px}#anchor h1{margin:0 0 10px;font-size:28px;line-height:1.35}#anchor .explanation{color:#ccc;margin:14px 2px 0;font-size:22px;line-height:1.5}
+#results{grid-column:2/-1;min-width:0;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;scrollbar-width:auto;padding:0 10px 30px 0;overscroll-behavior:contain}
+#results::-webkit-scrollbar{width:14px}#results::-webkit-scrollbar-thumb{background:#777;border:3px solid #000;border-radius:8px}#results::-webkit-scrollbar-track{background:#141414}
+#columnHeads{position:sticky;top:0;z-index:4;background:#000;display:grid;grid-template-columns:repeat(var(--row-cols,2),minmax(0,1fr));gap:12px;padding:0 0 12px;margin:0;font-size:24px;font-weight:700;line-height:1.4;border-bottom:1px solid #555}
+#columnHeads span{min-width:0;padding:4px 6px}#columnHeads span:first-child{color:var(--source-color,#54adff)}#columnHeads .shared-heading{color:#c6dcff}
+.result-row{margin:0 0 22px;padding-top:14px;border-top:1px solid #333}.result-row:first-child{border-top:0}.row-title{margin:0 0 8px;font-size:23px;line-height:1.4;font-weight:600;color:#ddd;overflow-wrap:anywhere}
+.row-grid,.shared-grid{display:grid;grid-template-columns:repeat(var(--row-cols,2),minmax(0,1fr));gap:12px;align-items:start}
+figure{margin:0;min-width:0;background:#080808}figcaption{height:100px;min-height:100px;display:flex;align-items:center;gap:8px;padding:8px;font-size:clamp(24px,1.65vw,29px);line-height:1.35;font-weight:700;overflow-wrap:anywhere}
+.label{min-width:0;flex:1}.lut{flex-shrink:0;display:inline-flex;align-items:center;min-height:44px;padding:5px 7px;color:#fff;border:1px solid #888;border-radius:5px;font-size:22px;text-decoration:none;background:#222}.lut:hover{background:#444}
+.picture{display:block;position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#000;border:0}.picture img{display:block;width:100%;height:100%;object-fit:contain}.picture:focus-visible,.lut:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+figure[data-source=content]{--source-color:#ff6464}figure[data-source=reference]{--source-color:#54adff}figure[data-source] figcaption{color:var(--source-color)}figure[data-source] .picture:after{content:"";position:absolute;inset:0;border:4px solid var(--source-color);pointer-events:none}
+figure[data-kind=shared] figcaption{color:#c6dcff}.empty{display:grid;place-items:center;height:100%;font-size:24px;color:#888}
+#sharedBlock{border-top:2px solid #777;margin-top:26px;padding-top:18px}#sharedBlock h2{margin:0 0 8px;font-size:28px;line-height:1.4}#sharedBlock .explanation{margin:0 0 16px;font-size:22px;line-height:1.5;color:#ccc}.shared-grid{row-gap:22px}
+[hidden]{display:none!important}
+@media(max-width:1300px){header{flex-wrap:wrap}#group{min-width:250px}#methodControl{margin-left:auto}#method{width:225px}#anchor h1{font-size:25px}.row-title{font-size:22px}}
+@media(max-width:1000px){button,select{font-size:22px}#methodControl{font-size:21px}#counter{font-size:21px}#columnHeads{font-size:22px}figcaption{padding:7px;font-size:24px;flex-wrap:wrap;align-content:center}.lut{font-size:21px}#anchor .explanation,#sharedBlock .explanation{font-size:21px}}
+@media(max-width:900px){body{height:auto;overflow:auto}header{position:relative;gap:8px;padding:10px}#modeOne,#modeMany{flex:1;padding:8px 6px;white-space:normal}#group{flex:1 1 100%;min-width:0}#methodControl{flex:1 1 auto;margin:0}#method{width:auto;max-width:210px}#counter{margin-left:auto}#workspace{display:block;height:auto;padding:10px}#anchor{overflow:visible;padding:0;margin-bottom:22px}#anchor h1{font-size:26px}#results{overflow:visible;padding:0 0 25px;scrollbar-gutter:auto}#columnHeads{position:relative;display:block;padding:10px 0;margin-bottom:10px}#columnHeads span{display:block;padding:2px 0}.row-grid,.shared-grid{grid-template-columns:minmax(0,1fr)}.result-row{padding-top:18px;margin-bottom:26px}.row-title{font-size:24px}.picture{aspect-ratio:4/3}figcaption{font-size:26px;min-height:64px;height:auto}.lut{font-size:22px}.row-grid{gap:12px}#sharedBlock h2{font-size:27px}}
+</style>
+</head>
+<body>
+<header>
+ <button id="modeOne" type="button" aria-pressed="true">一张内容 → 多张参考</button>
+ <button id="modeMany" type="button" aria-pressed="false">多张内容 → 一张参考</button>
+ <select id="group" aria-label="选择图片组"></select>
+ <label id="methodControl" hidden>共享方法 <select id="method" aria-label="选择共享 LUT 方法"></select></label>
+ <span id="counter"></span>
+</header>
+<main id="workspace" data-mode="one-to-many">
+ <aside id="anchor" aria-label="固定内容图或固定参考图"></aside>
+ <section id="results" aria-label="逐张追色结果，可上下滚动" tabindex="0">
+  <div id="columnHeads"></div>
+  <div id="rows"></div>
+  <section id="sharedBlock" hidden></section>
+ </section>
+</main>
+<script>
+const D=__DATA__;
+const $=id=>document.getElementById(id);
+let mode='one-to-many',groupIndex=0,method=D.methods[0];
+const availableModes=new Set(D.groups.map(g=>g.mode));
+if(!availableModes.has(mode)&&D.groups.length)mode=D.groups[0].mode;
+const selectedInitial=D.groups.findIndex(g=>g.mode===mode);if(selectedInitial>=0)groupIndex=selectedInitial;
+function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node}
+function imageCard(item,label,source,kind){
+ const figure=element('figure');if(source)figure.dataset.source=source;if(kind)figure.dataset.kind=kind;
+ const caption=element('figcaption'),name=element('span','label',label);name.title=label;caption.append(name);
+ if(item&&item.cube){const lut=element('a','lut','LUT ↓');lut.href=item.cube;lut.setAttribute('download','');lut.title='保存这张结果对应的 LUT';caption.append(lut)}
+ const picture=element('a','picture');picture.target='_blank';picture.rel='noopener';picture.title='打开完整图片';
+ if(item){picture.href=item.url||item.preview;const img=element('img');img.src=item.preview||item.url;img.alt=label;img.loading='lazy';img.decoding='async';picture.append(img)}
+ else picture.append(element('span','empty','未生成'));
+ figure.append(caption,picture);return figure;
+}
+function fitHeader(){
+ const h=document.querySelector('header').getBoundingClientRect().height;$('workspace').style.setProperty('--header-height',h+'px');
+ // The result scrollbar takes space. Match the fixed input frame to the exact result-card width.
+ const picture=document.querySelector('.result-row .picture'),anchorFigure=$('anchor').querySelector('figure');
+ if(picture&&anchorFigure)anchorFigure.style.width=picture.getBoundingClientRect().width+'px';
+}
+function fillGroupSelect(){
+ $('group').replaceChildren();D.groups.forEach((g,i)=>{if(g.mode!==mode)return;const option=element('option',null,g.title);option.value=i;$('group').append(option)});$('group').value=String(groupIndex);
+}
+function updateMethod(){
+ document.querySelectorAll('[data-shared-row]').forEach(holder=>{
+  const row=D.groups[groupIndex].rows[Number(holder.dataset.sharedRow)];
+  holder.replaceChildren(imageCard(row.shared&&row.shared[method],'共享 LUT · '+(D.labels[method]||method),null,'shared'));
+ });
+ const heading=document.querySelector('.shared-heading');if(heading)heading.textContent='共享 LUT · '+(D.labels[method]||method);
+ fitHeader();
+}
+function render(){
+ if(!D.groups.length){$('anchor').append(element('p','explanation','还没有图片组。'));return}
+ const group=D.groups[groupIndex],one=group.mode==='one-to-many';mode=group.mode;
+ $('workspace').dataset.mode=mode;$('results').dataset.mode=mode;
+ $('workspace').style.setProperty('--cols',one?'3':'4');$('results').style.setProperty('--row-cols',one?'2':'3');
+ $('results').style.setProperty('--source-color',one?'#54adff':'#ff6464');
+ $('modeOne').setAttribute('aria-pressed',String(one));$('modeMany').setAttribute('aria-pressed',String(!one));
+ $('modeOne').hidden=!availableModes.has('one-to-many');$('modeMany').hidden=!availableModes.has('many-to-one');
+ $('methodControl').hidden=one;fillGroupSelect();
+ $('anchor').replaceChildren(element('h1',null,one?'固定内容图':'固定风格参考'));
+ $('anchor').append(imageCard(group.anchor,group.anchor.label||(one?'内容图':'风格参考'),one?'content':'reference','anchor'));
+ $('anchor').append(element('p','explanation',one?'右侧每张参考分别生成一个 LUT，并套用到这同一张内容图。向下滚动比较各张参考带来的色调。':'右侧每张内容图与结果逐行对应。独立追色逐张计算；共享 LUT 先融合整组内容，再把同一个滤镜套到每张图。'));
+ if(group.note)$('anchor').append(element('p','explanation',group.note));
+ $('counter').textContent=group.rows.length+(one?' 张参考':' 张内容');
+ $('columnHeads').replaceChildren(element('span',null,one?'当前参考图':'当前内容图'),element('span',null,'逐张独立追色'));
+ if(!one)$('columnHeads').append(element('span','shared-heading','共享 LUT · '+(D.labels[method]||method)));
+ $('rows').replaceChildren();
+ group.rows.forEach((row,i)=>{
+  const section=element('section','result-row');section.dataset.rowId=row.id||String(i+1);
+  section.append(element('h2','row-title',row.label||(one?'参考 ':'内容 ')+(i+1)));
+  const cards=element('div','row-grid');
+  cards.append(imageCard(row.input,(one?'参考图':'内容图')+' · '+(row.input.label||String(i+1)),one?'reference':'content','input'));
+  cards.append(imageCard(row.independent,'独立追色 · MKL / Oklab',null,'independent'));
+  if(!one){const shared=element('div','shared-holder');shared.dataset.sharedRow=String(i);cards.append(shared)}
+  section.append(cards);$('rows').append(section);
+ });
+ $('sharedBlock').replaceChildren();const shared=one&&group.shared&&group.shared.results;
+ $('sharedBlock').hidden=!shared;
+ if(shared){
+  $('sharedBlock').append(element('h2',null,'合并全部参考：共享 LUT 结果'));
+  $('sharedBlock').append(element('p','explanation','上面逐张参考各自追色；下面把本组全部参考共同用于计算。每张结果都是同一张固定内容图，标签表示多参考融合方法。'));
+  const cards=element('div','shared-grid');D.methods.forEach(m=>{if(shared[m])cards.append(imageCard(shared[m],D.labels[m]||m,null,'shared'))});$('sharedBlock').append(cards);
+ }
+ if(!one)updateMethod();fitHeader();$('results').scrollTop=0;if(innerWidth<=900)window.scrollTo({top:0,behavior:'instant'});
+}
+function changeMode(next){const found=D.groups.findIndex(g=>g.mode===next);if(found<0)return;mode=next;groupIndex=found;render()}
+D.methods.forEach(m=>{const option=element('option',null,D.labels[m]||m);option.value=m;$('method').append(option)});$('method').value=method;
+$('modeOne').onclick=()=>changeMode('one-to-many');$('modeMany').onclick=()=>changeMode('many-to-one');
+$('group').onchange=event=>{groupIndex=Number(event.target.value);render()};
+$('method').onchange=event=>{method=event.target.value;updateMethod()};
+addEventListener('resize',fitHeader);render();
+</script>
+</body>
+</html>

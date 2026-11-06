@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>共享 LUT 追色对照</title>
+<style>
+*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;background:#000;color:#fff}
+body{display:grid;grid-template-rows:82px minmax(0,1fr);height:100vh;height:100dvh;overflow:hidden;font:600 26px/1.3 system-ui,"Microsoft YaHei",sans-serif}
+header{display:flex;align-items:center;gap:10px;padding:0 10px;border-bottom:1px solid #444;min-width:0;white-space:nowrap;overflow:hidden}
+button,select{height:58px;border:2px solid #888;border-radius:6px;background:#292929;color:#fff;font:inherit}
+button{min-width:138px;padding:0 14px;cursor:pointer}button:hover{background:#444}
+#group{width:clamp(170px,23vw,400px);min-width:0}#reference{width:160px}#position{font-variant-numeric:tabular-nums;min-width:85px}
+#context{overflow:hidden;text-overflow:ellipsis;font-size:24px;color:#ddd;min-width:0}.reference-label{color:#54adff}
+#grid{display:grid;grid-template-columns:repeat(var(--columns,4),minmax(0,1fr));grid-template-rows:repeat(var(--rows,2),minmax(0,1fr));gap:6px;padding:6px;min-height:0;min-width:0;overflow:hidden}
+figure{display:grid;grid-template-rows:50px minmax(0,1fr);min-width:0;min-height:0;margin:0;background:#000}
+figcaption{display:flex;align-items:center;gap:4px;padding:0 8px;min-width:0;overflow:hidden;font-size:clamp(26px,1.6vw,32px);font-weight:700;white-space:nowrap}
+.label{overflow:hidden;text-overflow:ellipsis;min-width:0}.lut{margin-left:auto;color:#ddd;font-size:22px;flex-shrink:0;text-decoration:none;padding:5px}
+.picture{display:block;position:relative;width:100%;height:100%;min-height:0;min-width:0;overflow:hidden;background:#000}
+img{display:block;width:100%;height:100%;object-fit:contain}figure[data-source=content]{--border:#ff6464}figure[data-source=reference]{--border:#54adff}
+figure[data-source] figcaption{color:var(--border)}figure[data-source] .picture:after{content:"";position:absolute;inset:0;border:4px solid var(--border);pointer-events:none}
+.empty{display:grid;place-items:center;height:100%;color:#777}[hidden]{display:none!important}a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+@media(max-width:1150px){#context{display:none}.reference-label{display:none}#group{width:220px}header{gap:8px}}
+@media(max-width:800px){#group{width:170px}button{min-width:112px;padding:0 6px}#reference{width:130px}header{font-size:24px}#position{min-width:75px}}
+@media(max-width:630px){body{grid-template-rows:142px minmax(0,1fr)}header{display:grid;grid-template-columns:1fr 95px 1fr;grid-template-rows:64px 64px;gap:4px 6px}#prev{grid-column:1;grid-row:1}#position{grid-column:2;grid-row:1;text-align:center}#next{grid-column:3;grid-row:1}#group{grid-column:1/3;grid-row:2;width:100%}#reference{grid-column:3;grid-row:2;width:100%}button{min-width:0;font-size:23px}figcaption{font-size:23px;padding:0 4px}.lut{font-size:18px}}
+</style>
+</head>
+<body>
+<header>
+<button id="prev" type="button">← 上一张</button>
+<select id="group" aria-label="选择实验组"></select>
+<button id="next" type="button">下一张 →</button>
+<span id="position"></span><span class="reference-label">参考</span><select id="reference" aria-label="切换风格参考图"></select>
+<span id="context"></span>
+</header>
+<main id="grid" aria-label="内容、风格参考与共享 LUT 的套用结果"></main>
+<script>
+const D=__DATA__;
+const $=id=>document.getElementById(id), tiles=[], grid=$('grid');
+const key='color-match-lut-review:'+location.pathname;
+let index=0,referenceIndex=0;
+try{const stored=Number(localStorage.getItem(key));if(Number.isInteger(stored)&&stored>=0&&stored<D.pages.length)index=stored}catch{}
+function tile(name,label,source){
+ const figure=document.createElement('figure');figure.dataset.key=name;if(source)figure.dataset.source=source;
+ const caption=document.createElement('figcaption'),text=document.createElement('span');text.className='label';text.textContent=label;text.title=label;caption.append(text);
+ const lut=document.createElement('a');lut.className='lut';lut.textContent='LUT ↓';lut.hidden=!!source;lut.setAttribute('download','');caption.append(lut);
+ const link=document.createElement('a');link.className='picture';link.target='_blank';link.rel='noopener';link.title='打开完整图片';
+ const img=document.createElement('img');img.alt=label;img.decoding='async';const empty=document.createElement('span');empty.className='empty';empty.textContent='未生成';empty.hidden=true;link.append(img,empty);
+ figure.append(caption,link);grid.append(figure);tiles.push({name,figure,text,lut,link,img,empty});
+}
+tile('content','内容图','content');tile('reference','风格参考','reference');D.methods.forEach(m=>tile(m,D.labels[m]||m));
+const groups=[...new Set(D.pages.map(p=>p.group))];
+for(const group of groups){const option=document.createElement('option');option.value=group;option.textContent=group;$('group').append(option)}
+function layout(){
+ const n=tiles.length,r=innerWidth/innerHeight;let columns,rows,positions;
+ if(n===8&&r>=1.2){columns=4;rows=2;positions=[[1,1],[1,2],[2,1],[3,1],[4,1],[2,2],[3,2],[4,2]]}
+ else{columns=r>=1.2?Math.min(4,Math.ceil(n/2)):r>=.95?3:2;if(n<=3&&r>=1.2)columns=n;rows=Math.ceil(n/columns);positions=tiles.map((_,i)=>[i%columns+1,Math.floor(i/columns)+1])}
+ grid.style.setProperty('--columns',columns);grid.style.setProperty('--rows',rows);grid.dataset.layout=columns+'x'+rows;
+ tiles.forEach((t,i)=>{t.figure.style.gridColumn=positions[i][0];t.figure.style.gridRow=positions[i][1]});
+}
+function update(){
+ const page=D.pages[index];referenceIndex=Math.min(referenceIndex,page.references.length-1);
+ $('group').value=page.group;$('position').textContent=(index+1)+' / '+D.pages.length;$('context').textContent=page.title;$('context').title=page.title;
+ $('reference').replaceChildren();page.references.forEach((ref,i)=>{const o=document.createElement('option');o.value=i;o.textContent='风格 '+(i+1)+' / '+page.references.length;o.title=ref.name;$('reference').append(o)});$('reference').value=referenceIndex;
+ tiles.forEach(t=>{const item=t.name==='content'?page.content:t.name==='reference'?page.references[referenceIndex]:page.results[t.name];
+  t.img.hidden=!item;t.empty.hidden=!!item;t.lut.hidden=!item||!item.cube;
+  if(item){t.img.src=item.preview;t.link.href=item.url;t.text.title=(D.labels[t.name]||t.text.textContent)+' · '+(item.name||page.title);if(item.cube)t.lut.href=item.cube}
+  else{t.img.removeAttribute('src');t.link.removeAttribute('href');t.lut.removeAttribute('href')}
+ });
+ try{localStorage.setItem(key,String(index))}catch{}
+}
+function move(delta){index=(index+delta+D.pages.length)%D.pages.length;update()}
+$('prev').onclick=()=>move(-1);$('next').onclick=()=>move(1);
+$('group').onchange=event=>{index=D.pages.findIndex(p=>p.group===event.target.value);referenceIndex=0;update()};
+$('reference').onchange=event=>{referenceIndex=Number(event.target.value);update()};
+addEventListener('keydown',event=>{if(event.target.matches('select,input,textarea'))return;if(['ArrowRight','PageDown',' '].includes(event.key)){event.preventDefault();move(1)}if(['ArrowLeft','PageUp'].includes(event.key)){event.preventDefault();move(-1)}});
+addEventListener('resize',layout);layout();update();
+</script>
+</body>
+</html>
