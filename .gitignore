@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+/vendor/
+/models/
+/data/
+/out/
+/outputs/
+/local-backends/
