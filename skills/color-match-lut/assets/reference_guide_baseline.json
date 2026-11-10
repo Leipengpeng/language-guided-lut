@@ -1,0 +1,22 @@
+{
+  "id": "color-guide",
+  "style_catalog_sha256": "d16ac4b6692d94b4a2072875dca2c195f033cbca8d178c41a8f3553e7820ebc3",
+  "guide_targets": {
+    "default": 20.398638384859616,
+    "per_style": {
+      "godfather_amber": 13.755550813589133,
+      "last_emperor_gold": 18.4997696566217,
+      "schindler_silver": 21.74640154953709,
+      "traffic_steel": 14.729810625995103,
+      "aviator_two_color": 15.86708568152034,
+      "la_la_land_twilight": 22.294486204243164,
+      "shape_water_teal": 22.47055079363668,
+      "anora_red": 13.83899619850042
+    }
+  },
+  "guide_calibration": {
+    "target_gain": 1.12,
+    "max_strength": 6.710268762391588,
+    "tone_limit": 2.35
+  }
+}

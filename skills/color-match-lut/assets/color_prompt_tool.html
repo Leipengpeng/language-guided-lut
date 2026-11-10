@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>调色指令转译</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font: 18px/1.6 system-ui, "Microsoft YaHei", sans-serif;
+      background: #111318;
+      color: #f2f4f9;
+      --muted: #b5bece;
+      --line: #424c60;
+      --accent: #a8ccff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 1360px; margin: auto; padding: clamp(18px, 4vw, 50px); }
+    header { margin-bottom: 24px; }
+    h1, h2, p { margin: 0; }
+    h1 { font-size: clamp(30px, 4vw, 42px); line-height: 1.2; margin: 6px 0 12px; }
+    h2, label { font-size: 24px; font-weight: 650; }
+    .eyebrow { color: var(--accent); font-weight: 600; }
+    .muted { color: var(--muted); }
+    .panels { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; }
+    .panel { min-width: 0; border: 1px solid var(--line); border-radius: 12px; background: #191e28; padding: clamp(16px, 2.5vw, 26px); }
+    .label-row, .output-title { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+    .output-title { justify-content: space-between; margin-top: 20px; }
+    textarea, select {
+      display: block; width: 100%; border: 1px solid #65738b; border-radius: 8px;
+      background: #121620; color: inherit; padding: 12px 14px; margin: 10px 0 14px; font: inherit;
+    }
+    textarea { resize: vertical; }
+    #user-text { min-height: 112px; }
+    #prompt { min-height: 190px; }
+    textarea::placeholder { color: #a1adc1; opacity: 1; }
+    button {
+      min-height: 46px; border: 1px solid #60718e; border-radius: 7px; cursor: pointer;
+      padding: 8px 14px; font: inherit; color: inherit; background: #28354b; text-align: left;
+    }
+    button:hover:not(:disabled) { background: #344864; }
+    button.primary { border-color: #a8ccff; background: #a8ccff; color: #101c2f; font-weight: 700; }
+    button.primary:hover:not(:disabled) { background: #c5deff; }
+    button:disabled { opacity: .52; cursor: default; }
+    button:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid #b6d4ff; outline-offset: 3px; }
+    .examples { margin-top: 22px; }
+    .links a { color: var(--accent); text-underline-offset: 0.2em; }
+    .examples p { margin-bottom: 8px; }
+    .example-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .example-list button { font-size: 1rem; max-width: 100%; }
+    #status { color: var(--accent); font-weight: 650; }
+    #status[data-kind="clarify"], #status[data-kind="unsupported"] { color: #ffcc8c; }
+    #summary, #question { margin-top: 8px; overflow-wrap: anywhere; }
+    #question { border-left: 3px solid #e7b677; padding-left: 12px; }
+    #assumptions { margin: 10px 0 0; padding-left: 24px; color: var(--muted); }
+    #copy-status { min-height: 1.6em; color: var(--accent); }
+    @media (max-width: 820px) { .panels { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">追色工作台 · 本地运行</p>
+      <h1>调色指令转译</h1>
+      <p class="muted">输入风格名或具体调色要求。默认把你的原话和照片保护约束交给 Image，也可选择附加一段调色建议。此页面只处理文字。</p>
+    </header>
+    <div class="panels">
+      <section class="panel" aria-labelledby="input-title">
+        <form id="rewrite-form">
+          <div class="label-row">
+            <label id="input-title" for="user-text">你的调色要求</label>
+            <span class="muted">可粘贴语音转写</span>
+          </div>
+          <textarea id="user-text" rows="3" placeholder="例如日系清新，曝光别变，整体别偏黄"></textarea>
+          <label for="strategy">提示词策略</label>
+          <select id="strategy">
+            <option value="guard-only">保留原话和照片保护约束</option>
+            <option value="guided">附加调色建议</option>
+          </select>
+          <div id="guidance-section" hidden>
+            <label for="guidance">补充调色建议</label>
+            <p class="muted" id="guidance-help">填写你确认的建议，也可粘贴代理提供的建议。页面直接附上文字。</p>
+            <textarea id="guidance" rows="3" aria-describedby="guidance-help"></textarea>
+          </div>
+          <button class="primary" id="rewrite" type="submit">生成调色指令</button>
+        </form>
+        <div class="examples">
+          <p class="muted" id="example-title">点一个例子试试</p>
+          <div class="example-list" id="examples" aria-labelledby="example-title">
+            <button type="button">像90年代港片，暖一点，脸别黄，整张别太暗</button>
+            <button type="button">整体暖一点，阴影偏冷青</button>
+            <button type="button">韩系奶油，但不要过曝</button>
+            <button type="button">高级灰，饱和度再低一点</button>
+            <button type="button">濱田英明</button>
+            <button type="button">宗庆辉</button>
+            <button type="button">只把天空调蓝</button>
+            <button type="button">1998年</button>
+          </div>
+        </div>
+      </section>
+      <section class="panel" aria-labelledby="result-title">
+        <h2 id="result-title">转译结果</h2>
+        <div aria-live="polite">
+          <p id="status">等待输入</p>
+          <p id="summary" hidden></p>
+          <ul id="assumptions" aria-label="采用的默认判断" hidden></ul>
+          <p id="question" hidden></p>
+        </div>
+        <div class="output-title">
+          <label for="prompt">Image 调色指令</label>
+          <button id="copy" type="button" disabled>复制指令</button>
+        </div>
+        <textarea id="prompt" rows="7" spellcheck="false" readonly></textarea>
+        <p id="copy-status" role="status"></p>
+      </section>
+    </div>
+    <p class="links muted"><a href="../references/color_prompt_rewriter.md">使用说明与研究出处</a> · <a href="../references/color_prompt_system_prompt.txt">复制给文字模型的转译提示词</a></p>
+  </main>
+
+  <script src="color_prompt_compiler.js"></script>
+  <script>
+    const form = document.getElementById("rewrite-form");
+    const input = document.getElementById("user-text");
+    const strategy = document.getElementById("strategy");
+    const guidance = document.getElementById("guidance");
+    const guidanceSection = document.getElementById("guidance-section");
+    const rewrite = document.getElementById("rewrite");
+    const status = document.getElementById("status");
+    const summary = document.getElementById("summary");
+    const assumptions = document.getElementById("assumptions");
+    const question = document.getElementById("question");
+    const prompt = document.getElementById("prompt");
+    const copy = document.getElementById("copy");
+    const copyStatus = document.getElementById("copy-status");
+    const compiler = globalThis.ColorPromptCompiler;
+
+    function render(result) {
+      const labels = { ready: "指令已生成", clarify: "需要明确调色方向", unsupported: "超出全局调色范围" };
+      status.dataset.kind = result.status || "";
+      status.textContent = labels[result.status] || result.message || "等待输入";
+      summary.textContent = result.summary || "";
+      summary.hidden = !summary.textContent;
+      assumptions.replaceChildren();
+      for (const assumption of result.assumptions || []) {
+        const item = document.createElement("li");
+        item.textContent = assumption;
+        assumptions.append(item);
+      }
+      assumptions.hidden = !assumptions.childElementCount;
+      question.textContent = result.question || "";
+      question.hidden = !question.textContent;
+      prompt.value = result.status === "ready" ? result.prompt || "" : "";
+      copy.disabled = !prompt.value;
+      copyStatus.textContent = "";
+    }
+
+    function compile() {
+      const text = input.value;
+      if (!text.trim()) {
+        render({ message: "请输入一句调色要求。" });
+        input.focus();
+        return;
+      }
+      try {
+        render(compiler.compile(text, { strategy: strategy.value, guidance: guidance.value }));
+      } catch (error) {
+        console.error(error);
+        render({ message: "转译时出错，请修改输入后重试。" });
+      }
+    }
+
+    async function copyPrompt() {
+      const text = prompt.value;
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        if (text === prompt.value) copyStatus.textContent = "已复制";
+        return;
+      } catch (error) {
+        // Browsers can restrict clipboard access when a page opens from disk.
+      }
+      if (text !== prompt.value) return;
+      prompt.focus();
+      prompt.select();
+      let copied = false;
+      try {
+        copied = document.execCommand("copy");
+      } catch (error) {
+        // Leave the prompt selected for a manual copy.
+      }
+      copyStatus.textContent = copied ? "已复制" : "已选中指令，按 Ctrl+C 复制。";
+    }
+
+    if (typeof compiler?.compile === "function") {
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        compile();
+      });
+      const reset = () => render({
+        message: input.value.trim() ? "点击生成调色指令。" : "等待输入"
+      });
+      input.addEventListener("input", reset);
+      guidance.addEventListener("input", reset);
+      strategy.addEventListener("change", () => {
+        guidanceSection.hidden = strategy.value !== "guided";
+        reset();
+      });
+      document.getElementById("examples").addEventListener("click", event => {
+        const button = event.target.closest("button");
+        if (!button) return;
+        input.value = button.textContent.trim();
+        compile();
+      });
+      copy.addEventListener("click", copyPrompt);
+    } else {
+      render({ message: "调色脚本未加载，请将页面与 color_prompt_compiler.js 放在同一文件夹后重新打开。" });
+      rewrite.disabled = true;
+      document.querySelectorAll("#examples button").forEach(button => { button.disabled = true; });
+    }
+  </script>
+</body>
+</html>

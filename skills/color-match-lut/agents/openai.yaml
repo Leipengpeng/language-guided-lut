@@ -1,0 +1,4 @@
+interface:
+  display_name: "Language-Guided LUT"
+  short_description: "输入原片和一句调色描述，自动找参考并导出成片、LUT 和可编辑 XMP"
+  default_prompt: "使用 $color-match-lut 告诉我怎么提供照片和描述调色意图，给我一句可以照着说的例子。"

@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+/vendor/
+/models/
+/data/
+/out/
+/outputs/
+/local-backends/
+/.agents/
+/.codex/
+/research/
+/recordings/
+/language-guided-lut.zip

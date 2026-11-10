@@ -1,0 +1,922 @@
+[
+  {
+    "id": "godfather_amber",
+    "label": "《教父2》古铜暗调",
+    "film": "The Godfather Part II",
+    "film_year": 1974,
+    "director": "Francis Ford Coppola",
+    "oscar_year": 1975,
+    "oscar_film": "The Godfather Part II",
+    "look_variant": "warm period palette",
+    "style_en": "Give the photo deep, readable near-neutral blacks, amber-brown midtones and warm ivory highlights. Concentrate warm color in existing yellow, brown and amber tones and gently mute cool hues. Keep midtone contrast firm and roll off highlights smoothly.",
+    "style_signals": [
+      "warm_yellow_midtones",
+      "deeper_shadows",
+      "muted_cool_chroma"
+    ],
+    "sources": [
+      {
+        "kind": "award",
+        "url": "https://www.oscars.org/oscars/ceremonies/1975"
+      },
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://www.fdtimes.com/2014/05/20/remembering-gordon-willis-asc/",
+        "note": "Gordon Willis recalls a consistent yellow color structure and describes handling the period shift in Part II."
+      },
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://www.thebeliever.net/an-interview-with-gordon-willis/",
+        "note": "The interview discusses the warm yellow and orange look of Part II and Willis's control of the overall palette."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.14,
+      "lift": -0.035,
+      "chroma": 0.82,
+      "shadow_ab": [
+        0.002,
+        0.004
+      ],
+      "highlight_ab": [
+        0.011,
+        0.026
+      ]
+    },
+    "anchor_note": "Numeric Oklab values are heuristic color anchors inspired by the palette. They are not production settings or historical grade measurements."
+  },
+  {
+    "id": "last_emperor_gold",
+    "label": "《末代皇帝》朱红金橙",
+    "film": "The Last Emperor",
+    "film_year": 1987,
+    "director": "Bernardo Bertolucci",
+    "oscar_year": 1988,
+    "oscar_film": "The Last Emperor",
+    "look_variant": "childhood and imperial palette",
+    "style_en": "Use luminous golden-orange midtones and warm cream highlights. Enrich existing vermilion, orange and gold colors with clean hue separation, soft contrast and open shadows. Ease back cool colors so that the red and gold remain distinct.",
+    "style_signals": [
+      "warm_yellow_midtones",
+      "warm_hue_chroma_up",
+      "open_shadows"
+    ],
+    "sources": [
+      {
+        "kind": "award",
+        "url": "https://www.oscars.org/oscars/ceremonies/1988"
+      },
+      {
+        "kind": "cinematographer_essay",
+        "url": "https://bernardobertolucci.org/wp-content/uploads/2023/10/LE_BOOK-blad-07-08.pdf",
+        "note": "Vittorio Storaro’s Painting with Light describes red, orange and yellow as successive colors in the early imperial palette. The rest of the film uses additional palettes."
+      }
+    ],
+    "anchor": {
+      "contrast": 0.96,
+      "lift": 0.035,
+      "chroma": 1.14,
+      "shadow_ab": [
+        0.007,
+        0.013
+      ],
+      "highlight_ab": [
+        0.013,
+        0.031
+      ]
+    },
+    "anchor_note": "Numeric Oklab values are heuristic color anchors inspired by the palette. They are not production settings or historical grade measurements."
+  },
+  {
+    "id": "schindler_silver",
+    "label": "《辛德勒的名单》纪实银灰",
+    "film": "Schindler's List",
+    "film_year": 1993,
+    "director": "Steven Spielberg",
+    "oscar_year": 1994,
+    "oscar_film": "Schindler's List",
+    "look_variant": "main monochrome palette",
+    "style_en": "Create neutral silver-black monochrome with a broad gray scale, solid readable blacks, detailed silvery highlights and a firm but smooth tonal curve. Convert all source hues smoothly into gray values with visible separation in the midtones.",
+    "style_signals": [
+      "near_zero_chroma",
+      "readable_midtones",
+      "deeper_shadows"
+    ],
+    "sources": [
+      {
+        "kind": "award",
+        "url": "https://www.oscars.org/oscars/ceremonies/1994"
+      },
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/schindlers-list-finds-heroism-amidst-holocaust/",
+        "note": "Janusz Kamiński describes the deliberately somber black-and-white cinematography. The study uses the main monochrome palette and omits selective-color scenes."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.15,
+      "lift": -0.006,
+      "chroma": 0,
+      "shadow_ab": [
+        0,
+        0
+      ],
+      "highlight_ab": [
+        0,
+        0
+      ]
+    },
+    "anchor_note": "Numeric Oklab values are heuristic color anchors inspired by the palette. They are not production settings or historical grade measurements."
+  },
+  {
+    "id": "traffic_steel",
+    "label": "《毒品网络》冷钢蓝",
+    "film": "Traffic",
+    "film_year": 2000,
+    "director": "Steven Soderbergh",
+    "oscar_year": 2001,
+    "oscar_film": "Traffic",
+    "look_variant": "Ohio and Washington, DC strand",
+    "style_en": "Use a cool, nearly monochromatic steel-blue grade with restrained saturation. Carry slate blue through the shadows and cooler midtones, ease warm hues toward muted neutrals, keep highlights closer to cool white, and use a firm but smooth tone curve.",
+    "style_signals": [
+      "cool_blue_shadows",
+      "cool_blue_midtones",
+      "overall_chroma_down"
+    ],
+    "sources": [
+      {
+        "kind": "award",
+        "url": "https://www.oscars.org/oscars/ceremonies/2001"
+      },
+      {
+        "kind": "colorist_production_interview",
+        "url": "https://www.livedesignonline.com/traffic-patterns",
+        "note": "The production account includes Cinesite colorist Julius Fride and describes the cold blue Ohio/DC thread, distinct from the warmer San Diego and Mexico threads."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.09,
+      "lift": -0.011,
+      "chroma": 0.58,
+      "shadow_ab": [
+        -0.004,
+        -0.032
+      ],
+      "highlight_ab": [
+        -0.001,
+        -0.012
+      ]
+    },
+    "anchor_note": "Numeric Oklab values are heuristic color anchors inspired by the palette. They are not production settings or historical grade measurements."
+  },
+  {
+    "id": "aviator_two_color",
+    "label": "《飞行家》复古双色",
+    "film": "The Aviator",
+    "film_year": 2004,
+    "director": "Martin Scorsese",
+    "oscar_year": 2007,
+    "oscar_film": "The Departed",
+    "look_variant": "early two-color Technicolor-inspired palette",
+    "style_en": "Use a restrained two-color film palette. Preserve and enrich existing warm reds and oranges, shift existing blues and greens toward soft blue-green cyan, and compress the saturation of violet and pure blue. Use warm neutral highlights and a smooth highlight shoulder.",
+    "style_signals": [
+      "warm_hue_chroma_up",
+      "cool_hue_toward_cyan",
+      "blue_violet_chroma_down"
+    ],
+    "sources": [
+      {
+        "kind": "award",
+        "url": "https://www.oscars.org/oscars/ceremonies/2007",
+        "note": "Scorsese won Best Director for The Departed. The Aviator is another film he directed."
+      },
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/robert-richardson-asc-on-color/",
+        "note": "Robert Richardson describes collaborating with Technicolor Digital Intermediates to emulate the early two-color process and the subsequent three-strip palette."
+      },
+      {
+        "kind": "cinema_program_note",
+        "url": "https://web.library.yale.edu/sites/default/files/files/Aviator%20Notes.pdf",
+        "note": "Yale’s program notes identify red and cyan as the emphasis of the early two-strip-inspired section."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.03,
+      "lift": 0.007,
+      "chroma": 0.91,
+      "shadow_ab": [
+        -0.025,
+        -0.015
+      ],
+      "highlight_ab": [
+        0.013,
+        0.017
+      ]
+    },
+    "anchor_note": "Numeric Oklab values are heuristic color anchors inspired by the palette. They are not production settings or historical grade measurements."
+  },
+  {
+    "id": "la_la_land_twilight",
+    "label": "《爱乐之城》青紫暮色",
+    "film": "La La Land",
+    "film_year": 2016,
+    "director": "Damien Chazelle",
+    "oscar_year": 2017,
+    "oscar_film": "La La Land",
+    "look_variant": "romantic twilight palette",
+    "style_en": "Use a saturated twilight palette with cool cyan-blue lower midtones, distinct violet and rose tones where they already exist, and clean, luminous highlights. Increase separation between existing blue and pink hues while leaving natural warm colors coherent and texture readable.",
+    "style_signals": [
+      "cool_blue_midtones",
+      "blue_magenta_chroma_up",
+      "luminous_highlights"
+    ],
+    "sources": [
+      {
+        "kind": "award",
+        "url": "https://www.oscars.org/oscars/ceremonies/2017"
+      },
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://www.kodak.com/en/motion/blog-post/linus-sandgren-fsf/",
+        "note": "Linus Sandgren identifies cyan, pink and blue as the romantic night palette, with amber as a different strand."
+      },
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://www.moviemaker.com/la-la-land-linus-sandgren-camera-dancer/2/",
+        "note": "Sandgren recounts agreeing on green-blue, blue, pink and purple with Chazelle and the design team."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.07,
+      "lift": 0.013,
+      "chroma": 1.26,
+      "shadow_ab": [
+        -0.014,
+        -0.023
+      ],
+      "highlight_ab": [
+        0.013,
+        -0.009
+      ]
+    },
+    "anchor_note": "Numeric Oklab values are heuristic color anchors inspired by the palette. They are not production settings or historical grade measurements."
+  },
+  {
+    "id": "shape_water_teal",
+    "label": "《水形物语》水绿深影",
+    "film": "The Shape of Water",
+    "film_year": 2017,
+    "director": "Guillermo del Toro",
+    "oscar_year": 2018,
+    "oscar_film": "The Shape of Water",
+    "look_variant": "steel blue-green base palette",
+    "style_en": "Create a deep blue-green grade with sea-green midtones, steel teal shadows and soft, restrained highlights. Keep the black point rich and readable. Maintain separation of any existing red and amber colors from the teal palette.",
+    "style_signals": [
+      "cool_green_midtones",
+      "cool_teal_shadows",
+      "deeper_shadows",
+      "warm_cool_separation"
+    ],
+    "sources": [
+      {
+        "kind": "award",
+        "url": "https://www.oscars.org/oscars/ceremonies/2018"
+      },
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://filmmakermagazine.com/104228-dp-dan-laustsen-on-the-shape-of-water-judging-exposure-without-a-meter-and-capturing-rich-blacks/",
+        "note": "Dan Laustsen describes the steel-blue palette, its green counterpart, rich blacks and controlled warm/red departures."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.13,
+      "lift": -0.026,
+      "chroma": 0.95,
+      "shadow_ab": [
+        -0.031,
+        -0.013
+      ],
+      "highlight_ab": [
+        -0.014,
+        -0.003
+      ]
+    },
+    "anchor_note": "Numeric Oklab values are heuristic color anchors inspired by the palette. They are not production settings or historical grade measurements."
+  },
+  {
+    "id": "anora_red",
+    "label": "《阿诺拉》饱和红色胶片",
+    "film": "Anora",
+    "film_year": 2024,
+    "director": "Sean Baker",
+    "oscar_year": 2025,
+    "oscar_film": "Anora",
+    "look_variant": "heightened first-act palette",
+    "style_en": "Use a punchy warm film grade that makes existing crimson and cherry reds pronounced. Separate those reds from natural orange and warm neutral tones, add lively midtone contrast, retain readable shadows and give bright colors a smooth shoulder.",
+    "style_signals": [
+      "red_chroma_up",
+      "midtone_contrast_up",
+      "red_orange_separation"
+    ],
+    "sources": [
+      {
+        "kind": "award",
+        "url": "https://www.oscars.org/oscars/ceremonies/2025"
+      },
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://www.kodak.com/en/motion/blog-post/anora/",
+        "note": "Drew Daniels describes the rich first-part color and colder second-part palette as deliberate contrasts."
+      },
+      {
+        "kind": "director_interview",
+        "url": "https://roughdraftatlanta.com/2024/11/08/sean-baker-talks-the-making-of-anora/",
+        "note": "Baker describes the recurring hits of red and their coordination with cinematography and production design."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.12,
+      "lift": 0.007,
+      "chroma": 1.16,
+      "shadow_ab": [
+        0.013,
+        0.004
+      ],
+      "highlight_ab": [
+        0.024,
+        0.011
+      ]
+    },
+    "anchor_note": "Numeric Oklab values are heuristic color anchors inspired by the palette. They are not production settings or historical grade measurements."
+  },
+  {
+    "id": "apocalypse_saturated_dark",
+    "label": "《现代启示录》深黑浓彩",
+    "film": "Apocalypse Now",
+    "film_year": 1979,
+    "director": "Francis Ford Coppola",
+    "look_variant": "saturated colors against black",
+    "style_en": "Use a deep but readable black point and keep dense lower midtones. Give existing amber, rust and olive hues more weight, with saturated warm highlights only where a warm color already exists. Keep near-neutral shadows dark and retain highlight texture.",
+    "style_signals": [
+      "deeper_shadows",
+      "saturated_existing_warm",
+      "saturated_existing_olive"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/flashback-apocalypse-now/",
+        "note": "Vittorio Storaro discusses saturated colors, silhouetted darks and the importance of black. The warm-hue emphasis is a color-only adaptation of the warm highlights described in the article."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.16,
+      "lift": -0.042,
+      "chroma": 1.17,
+      "shadow_ab": [
+        0.003,
+        0.002
+      ],
+      "highlight_ab": [
+        0.014,
+        0.026
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "blade_runner_vegas_amber",
+    "label": "《银翼杀手2049》拉斯维加斯锈橙",
+    "film": "Blade Runner 2049",
+    "film_year": 2017,
+    "director": "Denis Villeneuve",
+    "look_variant": "Las Vegas orange-red exterior",
+    "style_en": "Draw lower midtones toward rust red and midtones toward a strong copper-orange. Roll highlights toward warm golden cream and gently compress competing blues and greens. Preserve shadow separation and apply the color bias smoothly.",
+    "style_signals": [
+      "rust_red_low_midtones",
+      "dense_orange_midtones",
+      "suppressed_cool_chroma"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/uncanny-valley-blade-runner-2049/",
+        "note": "Roger Deakins describes the orange and pink lens-filter combination for the Las Vegas exteriors and the resulting reddish look. Atmospheric smoke, lighting and set effects are outside this grade."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.06,
+      "lift": -0.016,
+      "chroma": 0.79,
+      "shadow_ab": [
+        0.029,
+        0.033
+      ],
+      "highlight_ab": [
+        0.025,
+        0.06
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "fury_road_desert_pop",
+    "label": "《疯狂的麦克斯：狂暴之路》沙金钴蓝",
+    "film": "Mad Max: Fury Road",
+    "film_year": 2015,
+    "director": "George Miller",
+    "look_variant": "graphic desert daylight",
+    "style_en": "Build a vivid daylight grade that separates existing beige and ochre into rich sun-warmed sand colors, and existing blue hues into deeper cobalt-blue. Use a firmer midtone curve and readable blacks. Let warm and cool colors stay distinct instead of applying a single whole-image tint.",
+    "style_signals": [
+      "rich_warm_earth",
+      "rich_existing_blue",
+      "graphic_contrast"
+    ],
+    "sources": [
+      {
+        "kind": "colorist_interview",
+        "url": "https://www.filmlight.ltd.uk/customers/meet-the-colourist/eric_whipp.php",
+        "note": "DI colorist Eric Whipp describes the director's request for a saturated graphic look and the contrast between warm sandy colors and a rich blue sky. Sky replacement and isolated correction are excluded."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.12,
+      "lift": -0.004,
+      "chroma": 1.3,
+      "shadow_ab": [
+        -0.003,
+        -0.009
+      ],
+      "highlight_ab": [
+        0.006,
+        0.017
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "fury_road_blue_night",
+    "label": "《疯狂的麦克斯：狂暴之路》深蓝夜调",
+    "film": "Mad Max: Fury Road",
+    "film_year": 2015,
+    "director": "George Miller",
+    "look_variant": "blue day-for-night color response",
+    "style_en": "Lower the middle exposure in a smooth, scene-wide curve while retaining existing shadow detail. Shift neutral shadows and midtones toward a strong blue and let highlights become a subdued cool silver. Keep small residual warm hues distinguishable.",
+    "style_signals": [
+      "lower_midtones",
+      "cool_blue_shadows",
+      "cool_silver_highlights"
+    ],
+    "sources": [
+      {
+        "kind": "colorist_interview",
+        "url": "https://www.filmlight.ltd.uk/customers/meet-the-colourist/eric_whipp.php",
+        "note": "DI colorist Eric Whipp describes lowering exposure and developing a stylized blue grade on the day-for-night material. The prompt carries over only the global tonal and color components."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.08,
+      "lift": -0.071,
+      "chroma": 0.94,
+      "shadow_ab": [
+        -0.003,
+        -0.049
+      ],
+      "highlight_ab": [
+        -0.006,
+        -0.017
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "moonlight_miami_color",
+    "label": "《月光男孩》迈阿密青蓝与品红",
+    "film": "Moonlight",
+    "film_year": 2016,
+    "director": "Barry Jenkins",
+    "look_variant": "Miami chromatic palette",
+    "style_en": "Make existing ocean blues and cyan-blue tones deep and clean, give existing lime greens and magentas clearer separation, and retain a believable warm axis in skin and earth colors. Keep bright tones luminous and avoid flattening the palette into a single color cast.",
+    "style_signals": [
+      "blue_cyan_chroma",
+      "magenta_green_separation",
+      "warm_skin_axis"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://www.arri.com/news-en/-moonlight-dp-james-laxton-creates-poetic-look-on-alexa",
+        "note": "James Laxton discusses the Miami palette of blue, magenta and lime, with warm skin and practical color choices. This prompt translates those references to existing hue ranges."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.04,
+      "lift": 0.007,
+      "chroma": 1.19,
+      "shadow_ab": [
+        -0.007,
+        -0.018
+      ],
+      "highlight_ab": [
+        0.01,
+        0.012
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "carol_cool_muted",
+    "label": "《卡罗尔》冷灰旧彩",
+    "film": "Carol",
+    "film_year": 2015,
+    "director": "Todd Haynes",
+    "look_variant": "restrained early-color-photography palette",
+    "style_en": "Lower broad saturation and build a cool, slightly soiled print palette. Let existing magentas and green hues remain distinguishable at modest saturation, while shifting near-neutrals toward cool gray. Keep gentle highlight separation and subdued midtone contrast.",
+    "style_signals": [
+      "muted_chroma",
+      "cool_gray_neutrals",
+      "residual_magenta_green"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://filmmakermagazine.com/97325-are-we-telling-stories-with-images-through-the-camera-or-from-a-computer-ed-lachman-on-shooting-carol-in-super-16mm/",
+        "note": "Edward Lachman describes a muted palette inspired by period photojournalism and names the cool magenta and green tendencies of early Ektachrome photography."
+      }
+    ],
+    "anchor": {
+      "contrast": 0.98,
+      "lift": -0.012,
+      "chroma": 0.72,
+      "shadow_ab": [
+        -0.005,
+        -0.015
+      ],
+      "highlight_ab": [
+        0.007,
+        -0.012
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "private_ryan_enr",
+    "label": "《拯救大兵瑞恩》低饱和高反差",
+    "film": "Saving Private Ryan",
+    "film_year": 1998,
+    "director": "Steven Spielberg",
+    "look_variant": "ENR-inspired retained-silver color response",
+    "style_en": "Use a firm global contrast curve with dense yet readable darks and a smooth bright shoulder. Reduce color saturation broadly, allowing existing neutral greens, grays and earth tones to retain their original hue ordering. Keep the highlights detailed and the image decisively subdued in color.",
+    "style_signals": [
+      "strong_contrast",
+      "broad_desaturation",
+      "neutral_darks"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/podcast/saving-private-ryan-20th-anniversary-janusz-kaminski/",
+        "note": "The ASC's interview with Janusz Kamiński identifies increased contrast and desaturation from ENR. Shutter cadence, flare and handheld effects are excluded."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.25,
+      "lift": -0.031,
+      "chroma": 0.56,
+      "shadow_ab": [
+        0,
+        0
+      ],
+      "highlight_ab": [
+        0,
+        0.003
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "o_brother_dusty_gold",
+    "label": "《逃狱三王》褪绿尘金",
+    "film": "O Brother, Where Art Thou?",
+    "film_year": 2000,
+    "director": "Joel Coen",
+    "look_variant": "dusty hand-tinted period palette",
+    "style_en": "Reduce vivid greens broadly and steer existing green-yellow hues toward dry ochre or muted brown. Give neutrals a restrained golden-brown bias and make bright tones softly creamy. Keep the tonal response gently faded and retain enough hue separation to read the scene.",
+    "style_signals": [
+      "suppressed_green_chroma",
+      "ochre_earth",
+      "cream_highlights"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/o-brother-cinematography-deakins/",
+        "note": "Roger Deakins and digital timer Julius Friede describe selectively muting the lush location greens and creating a dusty period look. Hue-range operations here are globally applied."
+      }
+    ],
+    "anchor": {
+      "contrast": 0.95,
+      "lift": 0.01,
+      "chroma": 0.64,
+      "shadow_ab": [
+        0.008,
+        0.022
+      ],
+      "highlight_ab": [
+        0.015,
+        0.04
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "matrix_simulation_green",
+    "label": "《黑客帝国》模拟世界青绿",
+    "film": "The Matrix",
+    "film_year": 1999,
+    "director": "Lana Wachowski and Lilly Wachowski",
+    "look_variant": "simulated reality color timing",
+    "style_en": "Use an unmistakable green bias in neutral shadows and midtones, with less colored and slightly cool highlights. Keep blacks solid, restrain pure blue saturation, and retain enough separation among existing hues to keep the scene recognizable.",
+    "style_signals": [
+      "green_neutrals",
+      "suppressed_pure_blue",
+      "defined_blacks"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/flashback-the-matrix-cinematography/",
+        "note": "Bill Pope explicitly describes green filters and green timing for the simulated world. Digitally altered skies and set colors are outside the global adaptation."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.13,
+      "lift": -0.023,
+      "chroma": 0.83,
+      "shadow_ab": [
+        -0.04,
+        0.007
+      ],
+      "highlight_ab": [
+        -0.013,
+        0.001
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "oppenheimer_silver",
+    "label": "《奥本海默》银盐黑白",
+    "film": "Oppenheimer",
+    "film_year": 2023,
+    "director": "Christopher Nolan",
+    "look_variant": "black-and-white objectivity sequences",
+    "style_en": "Convert all hues to neutral black-and-white with broad separation among grays. Use firm, clean blacks and substantial midtone differentiation, rolling highlights to detailed silver rather than clipping them. Retain the tonal ordering of existing elements.",
+    "style_signals": [
+      "neutral_monochrome",
+      "clean_blacks",
+      "detailed_silver_highlights"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://www.kodak.com/en/motion/blog-post/oppenheimer/",
+        "note": "Hoyte van Hoytema describes the custom 65mm black-and-white stock and black-and-white scenes. The contrast settings here are an interpretation, not a measured stock response."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.14,
+      "lift": -0.01,
+      "chroma": 0,
+      "shadow_ab": [
+        0,
+        0
+      ],
+      "highlight_ab": [
+        0,
+        0
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "poor_things_lisbon_reversal",
+    "label": "《可怜的东西》里斯本反转片浓彩",
+    "film": "Poor Things",
+    "film_year": 2023,
+    "director": "Yorgos Lanthimos",
+    "look_variant": "Lisbon color-reversal chapter",
+    "style_en": "Use a vivid color-reversal grade, making existing saturated hues dense and clearly separated while keeping light neutrals clean. Give midtones punch and use a smooth, readable toe and highlight shoulder. Keep existing warm and cool colors distinct across the scene.",
+    "style_signals": [
+      "strong_existing_chroma",
+      "firm_midtones",
+      "clean_neutrals"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/life-anew-poor-things/",
+        "note": "Robbie Ryan describes Lisbon's transition to vivid color and the Ektachrome photography for exteriors. The chosen saturation level is a global translation of that contrast with the earlier monochrome chapter."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.15,
+      "lift": -0.005,
+      "chroma": 1.28,
+      "shadow_ab": [
+        -0.005,
+        -0.004
+      ],
+      "highlight_ab": [
+        0.006,
+        0.01
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "poor_things_baxter_bw",
+    "label": "《可怜的东西》巴克斯特硬调黑白",
+    "film": "Poor Things",
+    "film_year": 2023,
+    "director": "Yorgos Lanthimos",
+    "look_variant": "high-contrast Baxter chapter",
+    "style_en": "Render neutral black-and-white with a decisive contrast curve. Keep the deepest values dense, separate middle-gray tones firmly, and keep bright silver tones controlled so texture remains visible. Preserve a readable range rather than turning dark surfaces into a single black.",
+    "style_signals": [
+      "high_contrast_monochrome",
+      "deep_blacks",
+      "bright_silver_tones"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/life-anew-poor-things/",
+        "note": "Robbie Ryan describes Eastman Double-X in the early monochrome chapter and Lanthimos's preference for a more contrasty monochrome image. Harder lighting is excluded."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.27,
+      "lift": -0.018,
+      "chroma": 0,
+      "shadow_ab": [
+        0,
+        0
+      ],
+      "highlight_ab": [
+        0,
+        0
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "dune_arrakis_dry",
+    "label": "《沙丘》厄拉科斯干燥砂岩",
+    "film": "Dune: Part One",
+    "film_year": 2021,
+    "director": "Denis Villeneuve",
+    "look_variant": "Arrakis desert exteriors",
+    "style_en": "Use a restrained mineral palette of sand, clay and warm pale stone. Reduce strong cool-blue chroma broadly, with an off-white warm shoulder and dusty ochre midtones. Keep restrained differences among earth colors and retain shadow texture.",
+    "style_signals": [
+      "dry_ochre_midtones",
+      "restrained_cool_chroma",
+      "warm_mineral_highlights"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/dune-fear-is-the-mind-killer/",
+        "note": "Greig Fraser describes Arrakis's hot haze, reduced blue skies and subtle desert color variations. The adaptation uses a global cool-hue response rather than sky retouching."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.04,
+      "lift": 0.005,
+      "chroma": 0.66,
+      "shadow_ab": [
+        0.003,
+        0.01
+      ],
+      "highlight_ab": [
+        0.008,
+        0.025
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "barry_lyndon_candle",
+    "label": "《巴里·林登》低反差烛光琥珀",
+    "film": "Barry Lyndon",
+    "film_year": 1975,
+    "director": "Stanley Kubrick",
+    "look_variant": "candlelight interiors and low-contrast response",
+    "style_en": "Use softly restrained contrast with visible dark-tone separation. Carry a warm honey-amber bias through existing warm mids and lights, allowing upper tones to turn ivory. Keep darker neutrals restrained and leave edges and fine texture sharp.",
+    "style_signals": [
+      "honey_amber_midtones",
+      "soft_contrast",
+      "ivory_highlights"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/flashback-barry-lyndon/",
+        "note": "John Alcott discusses candlelit interiors and preferring a low-contrast filter to diffusion. This adaptation retains tone and color cues while omitting lighting, diffusion and optical effects."
+      }
+    ],
+    "anchor": {
+      "contrast": 0.89,
+      "lift": -0.016,
+      "chroma": 0.88,
+      "shadow_ab": [
+        0.007,
+        0.01
+      ],
+      "highlight_ab": [
+        0.016,
+        0.033
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "red_shoes_technicolor",
+    "label": "《红菱艳》三色印染朱红",
+    "film": "The Red Shoes",
+    "film_year": 1948,
+    "director": "Michael Powell and Emeric Pressburger",
+    "look_variant": "Technicolor ballet chroma hierarchy",
+    "style_en": "Create a rich dye-print palette. Make existing scarlet and vermilion visibly dense and clean, keep existing greens and blues distinctly separate, and retain bright neutral highlights. Use firm contrast with smooth transitions and preserve the hue of existing objects outside the red ranges.",
+    "style_signals": [
+      "dense_vermilion",
+      "distinct_hues",
+      "dye_print_contrast"
+    ],
+    "sources": [
+      {
+        "kind": "cinematographer_interview",
+        "url": "https://theasc.com/article/jack-cardiff/",
+        "note": "Cardiff's account discusses his Technicolor work and the film's ballet sequence. Dense scarlet is a color-only interpretation of the film motif, with print workflow documented by the restoration archive."
+      },
+      {
+        "kind": "restoration_notes",
+        "url": "https://www.cinema.ucla.edu/sites/default/files/RedShoesBooklet.pdf",
+        "note": "The restoration team compared the new transfer with an original dye-transfer print."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.13,
+      "lift": -0.007,
+      "chroma": 1.24,
+      "shadow_ab": [
+        0.005,
+        -0.003
+      ],
+      "highlight_ab": [
+        0.015,
+        0.014
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  },
+  {
+    "id": "in_mood_love_red_green",
+    "label": "《花样年华》朱红墨绿",
+    "film": "In the Mood for Love",
+    "film_year": 2000,
+    "director": "Wong Kar Wai",
+    "look_variant": "red and green palette relationship",
+    "style_en": "Use rich dark greens and warm wine-red accents, each confined to existing hue ranges. Deepen the tonal base slightly while preserving neutral skin and highlight detail. Keep cool and warm accents distinct and avoid pushing the entire photo toward either red or green.",
+    "style_signals": [
+      "deep_existing_green",
+      "wine_red_accents",
+      "readable_darks"
+    ],
+    "sources": [
+      {
+        "kind": "director_statement",
+        "url": "https://s3.amazonaws.com/criterion-production/janus_promo_packages/473-/WKW_DirectorsStatement_r2_original.pdf",
+        "note": "The filmmaker's note documents the director-supervised restoration. The specific red and green relationship comes from the distributor's program essay and is recorded as an interpretation, not a technical account of a restoration grade."
+      },
+      {
+        "kind": "distributor_programme_essay",
+        "url": "https://www.criterion.com/current/posts/7976-notes-on-in-the-mood-for-love",
+        "note": "The essay identifies the film's shifts in red and green and distinguishes them by sequence."
+      }
+    ],
+    "anchor": {
+      "contrast": 1.1,
+      "lift": -0.026,
+      "chroma": 1.1,
+      "shadow_ab": [
+        -0.014,
+        0.005
+      ],
+      "highlight_ab": [
+        0.012,
+        0.015
+      ]
+    },
+    "anchor_note": "Heuristic Oklab color anchor for this adaptation. The numerical values do not describe a measured film print or production LUT."
+  }
+]

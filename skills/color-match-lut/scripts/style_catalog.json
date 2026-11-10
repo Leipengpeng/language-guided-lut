@@ -1,0 +1,142 @@
+{
+  "researched_at": "2026-11-03",
+  "description": "中文摄影调色的文字风格入口。下列内容是可修改的颜色意图提示，不是固定滤镜参数、唯一风格定义或平台热度排名。始终保留并优先执行用户原句。",
+  "scope": "color_only",
+  "global_avoid": [
+    "保持原构图、人物、物体、文字、纹理、相机位置和原有光照结构；只改变颜色与全局明暗关系。",
+    "不新增或移除物体，不把白天改成夜晚，不绘制新光源或局部霓虹照明。",
+    "不添加颗粒、网点、线稿、笔触、柔焦、晕影、边框或文字；这些不能由当前全局颜色 LUT 保留。",
+    "不因风格名称而强行改变肤色身份、脸部特征或物体形状；用户具体限定优先于入口的默认解释。"
+  ],
+  "styles": [
+    {
+      "id": "japanese-fresh",
+      "name": "日系清新",
+      "aliases": ["日系清新", "日系小清新", "日系通透", "日系清透", "日系明亮", "日系"],
+      "grading_intent": "把现有照片调成明亮、清透而柔和的日常摄影色调：中间调略明亮，阴影有层次，整体饱和度适度收敛，绿色与蓝色清爽，白色干净，高光柔和但保留细节。",
+      "avoid": ["不要把全部颜色漂白或把暗部一律抬成灰雾。", "不要固定套黄绿色偏色；原句若指定冷暖方向，以用户为准。"],
+      "source_ids": ["tuchong-japanese", "fujifilm-simulation"],
+      "evidence_note": "检索到创作者本人以日系清新命名的调色教程；这里采用其色彩与影调思路的概括，不复制固定参数。"
+    },
+    {
+      "id": "korean-cream",
+      "name": "韩系奶油",
+      "aliases": ["韩系奶油", "韩风奶油", "奶油色调", "奶油感", "奶油风", "韩系", "奶油"],
+      "grading_intent": "柔和、干净的奶油色彩：中间调通透偏明亮，白色稍带米白或浅暖意，综合色彩柔和而不过分灰淡，减轻刺眼黄绿，保留皮肤及物体原有细节；若用户指定冷奶油或奶灰，则按该方向调整。",
+      "avoid": ["不要依靠磨皮、模糊或新增柔光来制造奶油感。", "不要把所有白色涂成黄米色，也不要让高光大面积过曝。"],
+      "source_ids": ["meitu-korean", "douyin-korean"],
+      "evidence_note": "韩系奶油是创作者公开使用的调色称呼，具体冷暖与饱和度并不统一。"
+    },
+    {
+      "id": "hongkong-retro",
+      "name": "复古港风",
+      "aliases": ["复古港风", "港风复古", "港风", "港片色调", "港片感", "王家卫色调", "王家卫电影感"],
+      "grading_intent": "提取复古港片配色倾向：较浓的暖色与偏青绿的环境色形成对照，暗部有厚度，红色与暖肤色保持辨识度，适度收拢杂色并使高光柔和。把这当作色彩方向，而不是重现某位导演的完整镜头语言。",
+      "avoid": ["不加入运动拖影、抽帧、光晕、颗粒、黑边或复古字幕。", "不要把全图统一染成脏绿或让肤色失去自然层次。"],
+      "source_ids": ["bilibili-hongkong", "tencent-style-notes"],
+      "evidence_note": "港风有白天暖调、青黄复古、夜景霓虹等分支，用户进一步描述优先。"
+    },
+    {
+      "id": "cinematic-teal-orange",
+      "name": "电影青橙",
+      "aliases": ["电影青橙", "青橙电影", "青橙色调", "橙青色调", "蓝橙色调", "电影感", "好莱坞电影感"],
+      "grading_intent": "营造克制的青橙颜色对照：阴影与中性色适度偏青蓝，现有暖色及肤色保持温暖，中间调有清晰层次，黑位稳，高光柔和，减少无关颜色的抢眼程度。",
+      "avoid": ["不要把每个像素都推成青色或橙色，不给人脸强行着橘色。", "不改变光照方向、不添加局部补光、景深、宽银幕黑边或光晕。"],
+      "source_ids": ["adobe-cinematic", "tencent-style-notes"],
+      "evidence_note": "电影感远不止青橙；此入口只把未细化的电影感解释成一个可调整的配色起点。"
+    },
+    {
+      "id": "cyberpunk-neon",
+      "name": "赛博霓虹",
+      "aliases": ["赛博霓虹", "赛博朋克", "赛博朋克配色", "赛博", "霓虹色调", "青紫霓虹", "cyberpunk"],
+      "grading_intent": "在现有颜色和明暗结构上增强青蓝、紫色、洋红之间的对照，黑位更深，综合色彩鲜明而保留层次；把冷色阴影与现有暖色或品红高光拉开，形成未来感的配色。",
+      "avoid": ["不把白天改成夜晚，不新增灯牌、霓虹灯、反光、雨水或发光物。", "不依赖发光、镜头光晕或重新打光；不要为了强烈配色而大片裁切高光或暗部。"],
+      "source_ids": ["tencent-style-notes", "heydrones-cyberpunk"],
+      "evidence_note": "仅借用中文调色教程中的赛博配色，不能等同于赛博朋克文学或完整视觉世界观。"
+    },
+    {
+      "id": "american-retro",
+      "name": "美式复古",
+      "aliases": ["美式复古", "美式胶片", "美式怀旧", "美式色彩", "new american color"],
+      "grading_intent": "以暖琥珀色、较浓的红棕与稳重的暗部为色彩起点，保持自然物体颜色间的区别，肤色与暖色层次丰富，避免鲜艳数码感；明暗有厚度，整体带怀旧的彩色摄影观感。",
+      "avoid": ["不添加旧纸、划痕、颗粒、漏光、日期戳或模拟相机边框。", "不声称精确复刻某种胶卷、某台相机或某位摄影师的色彩科学。"],
+      "source_ids": ["fujifilm-nostalgic", "adobe-profiles"],
+      "evidence_note": "该入口参考怀旧彩色摄影的描述，是产品中的文字解释，不是对美式摄影的唯一概括。"
+    },
+    {
+      "id": "warm-film",
+      "name": "暖调胶片",
+      "aliases": ["暖调胶片", "暖色胶片", "胶片暖调", "胶片感", "胶片风", "复古胶片", "暖胶片"],
+      "grading_intent": "温和的暖色胶片倾向：高光略有琥珀暖意，饱和度适度收敛，颜色过渡柔和，黑位可轻微柔化但仍保留深浅层次，避免把全图涂黄。若用户点名冷调、反转片或具体胶卷，应以更具体的描述为准。",
+      "avoid": ["不生成颗粒、漏光、划痕、胶片边框或失焦。", "胶片感没有唯一颜色，不把入口当成对真实胶卷的测量仿真。"],
+      "source_ids": ["fujifilm-simulation", "fujifilm-nostalgic", "adobe-grain"],
+      "evidence_note": "泛胶片词的默认起点是温和暖调；胶卷类型或用户补充可覆盖这一默认。"
+    },
+    {
+      "id": "cool-muted",
+      "name": "低饱和清冷",
+      "aliases": ["低饱和清冷", "清冷感", "清冷色调", "冷淡风", "冷调", "高级灰", "低饱和"],
+      "grading_intent": "综合色彩克制、冷静，明暗层次清楚，中性灰与白色偏干净的冷调，蓝青只作轻微倾向，控制过艳的黄红与绿；保留黑位和正常肤色，避免因降饱和而浑浊。",
+      "avoid": ["不要把中性灰全部染蓝，不让肤色发青或无血色。", "不通过雾化、降低清晰度、局部重新打光来制造情绪。"],
+      "source_ids": ["adobe-profiles", "fujifilm-simulation"],
+      "evidence_note": "这是对冷调、低饱和、灰调等可组合描述的产品入口，不是同义词必须产生同一个结果。"
+    },
+    {
+      "id": "forest-green",
+      "name": "森系绿调",
+      "aliases": ["森系绿调", "森系", "森林感", "清透绿调", "氧气感", "氧气绿", "森系胶片"],
+      "grading_intent": "整理原有绿色的色相与饱和度，使绿意协调、有深浅层次而不过分荧光；中间调清透，亮部柔和，现有皮肤或暖色在绿色环境中仍可辨识。按用户要求选择明亮清新或较暗静谧的绿调。",
+      "avoid": ["不新增植物、前景树叶、阳光束、雾气或虚化。", "不要把没有绿色的场景涂成森林，也不把所有物体统一染绿。"],
+      "source_ids": ["meitu-forest", "douyin-forest", "tuchong-japanese"],
+      "evidence_note": "森系可明可暗，入口保留对原图条件与用户情绪描述的适应。"
+    },
+    {
+      "id": "french-painterly-colors",
+      "name": "法式油画配色",
+      "aliases": ["法式油画配色", "法式油画", "油画色调", "法式复古", "复古油画色", "油画感"],
+      "grading_intent": "只提取柔和的古典配色：米白、暖杏、灰粉与收敛的墨绿或棕色协调，综合色彩不过艳，高光柔和，中间调有细腻深浅，呈现温暖安静的配色氛围。",
+      "avoid": ["不绘制笔触、画布纹理、花朵、服装、道具或新背景。", "不通过磨皮、柔焦或添加局部窗光来冒充全局调色。"],
+      "source_ids": ["douyin-french", "adobe-profiles"],
+      "evidence_note": "油画感常同时依靠布景与布光；本入口刻意只实现颜色部分。"
+    },
+    {
+      "id": "american-comic-colors",
+      "name": "美漫配色",
+      "aliases": ["美漫配色", "美漫", "美国漫画配色", "漫画配色", "漫画感", "comic colors"],
+      "grading_intent": "仅借用美漫的醒目配色方向：综合色彩鲜明，现有红、蓝、黄等色彩更明确，明暗对比有力，暗部稳重，同时保留连续的摄影层次和原有细节。",
+      "avoid": ["不生成线稿、粗描边、网点、色块重绘、气泡文字或海报排版。", "不进行阈值化或重绘来承诺完整漫画化；最终交付仍是照片的颜色变换。"],
+      "source_ids": ["user-request", "adobe-profiles"],
+      "evidence_note": "这是用户明确提出的画风词的颜色化入口，不把它宣称为已验证的摄影调色热度类别。"
+    },
+    {
+      "id": "documentary-monochrome",
+      "name": "黑白纪实",
+      "aliases": ["黑白纪实", "纪实黑白", "黑白胶片", "黑白", "单色", "monochrome"],
+      "grading_intent": "把颜色转为有层次的黑白或接近中性的单色影调，保留亮部与暗部细节，黑位扎实，人物与背景的明暗区别清楚；整体对比按照用户要求克制或强烈。",
+      "avoid": ["不添加颗粒、划痕、纸张、边框或重绘纹理。", "如果用户要保留彩色，不因出现胶片或纪实一词就转为黑白。"],
+      "source_ids": ["fujifilm-simulation", "adobe-profiles"],
+      "evidence_note": "黑白有成熟的调色入口，但原彩色信息不会保留在黑白输出中；原图始终另存。"
+    }
+  ],
+  "sources": [
+    {"id":"tuchong-japanese","title":"日系清新静物调色教程","url":"https://zhaojingwei.tuchong.com/t/62781588/","publisher":"赵静薇_vivi 本人图虫教程","query":"日系清新 静物 调色 教程","note":"第一手创作者教程，可读正文明确其明亮、清爽颜色思路；未读取图片。"},
+    {"id":"meitu-korean","title":"韩系奶油感ins风日常调色","url":"https://show.meitu.com/detail-static/6827772633759372056?feed_id=6827772633759372056","publisher":"卷毛小泡面º / 美图社区","query":"韩系奶油 调色 配方","note":"本人公开配方命名，证明真实用语；没有把显示的收藏量作为跨平台流行度统计。"},
+    {"id":"douyin-korean","title":"韩系奶油风圣诞少女写真转档调色思路解析","url":"https://jingxuan.douyin.com/m/video/7442624247572204809","publisher":"汶霖修图课堂 / 抖音精选","query":"韩系奶油 调色 思路","note":"第一手教学正文可检索，包含全局和局部步骤；本Skill仅保留颜色方向，不搬用蒙版与修肤步骤。"},
+    {"id":"bilibili-hongkong","title":"王家卫经典色调：港风调色教程","url":"https://www.bilibili.com/video/BV11F411t7op/","publisher":"张杰修图调色课堂 / 哔哩哔哩","query":"港风 调色 教程","note":"核对公开标题与作者信息，只证明命名存在；未下载或观看视频图像，不据标题推断其具体参数。"},
+    {"id":"tencent-style-notes","title":"影视后期：Pr 调色处理之风格调色","url":"https://developer.cloud.tencent.com/article/2376371","publisher":"山河已无恙 / 腾讯云开发者社区","query":"赛博朋克 青橙 港风 日系 调色","note":"作者自己的学习笔记，分列电影青橙、港风、赛博与日系。不是腾讯相机官方标准或平台热度报告。"},
+    {"id":"heydrones-cyberpunk","title":"手把手教你赛博朋克调色！4分钟搞定科幻感！","url":"https://www.youtube.com/watch?v=A98UUu2_xaE","publisher":"HeyDrones / YouTube","query":"赛博朋克 调色 HeyDrones","note":"公开检索元数据可核对创作者与教程标题；网页实时展开失败，未观看或下载视频，具体配色以可读文字教程为辅。"},
+    {"id":"adobe-cinematic","title":"影视级内容图库","url":"https://helpx.adobe.com/cn/stock/contributor/help/artist-hub-migration/cinematic-stock.html","publisher":"Adobe 官方 / SouthWorks","query":"site:adobe.com 橙青色 电影 调色","note":"官方文章讨论橙青电影配色，也指出电影感还与拍摄、光线、镜头等因素相关。"},
+    {"id":"adobe-profiles","title":"在 Lightroom Classic 中调整图像色调和颜色以及使用灰度","url":"https://helpx.adobe.com/cn/lightroom-classic/desktop/process-and-develop-photos/image-tone-color.html","publisher":"Adobe 官方","query":"site:adobe.com 复古 黑白 配置文件 色调 颜色","note":"官方将艺术、黑白、现代、复古列为创意配置文件；它支持颜色类别的设计，不证明本目录各俗称的热度。"},
+    {"id":"fujifilm-simulation","title":"胶片模拟","url":"https://fujifilm-dsc.com/zhs/manual/x100f_v20/shooting/film_simulation/index.html","publisher":"FUJIFILM 官方说明书","query":"富士 胶片模拟 柔和 经典 正片 黑白","note":"官方区分鲜艳、柔和、经典、负片、黑白等色调与对比表现；目录不声称精确复刻这些相机算法。"},
+    {"id":"fujifilm-nostalgic","title":"NOSTALGIC Neg.","url":"https://www.fujifilm-x.com/global/products/film-simulation/nostalgic-neg/","publisher":"FUJIFILM 官方","query":"NOSTALGIC Neg New American Color amber","note":"官方以怀旧彩色摄影、琥珀色调为解释背景；仅参考文字意图，不使用其图片或作官方等效声明。"},
+    {"id":"adobe-grain","title":"向视频添加晕影与颗粒效果","url":"https://helpx.adobe.com/cn/lightroom/mobile/edit-videos/add-vignette-and-grain-effects-to-videos.html","publisher":"Adobe 官方","query":"site:adobe.com 胶片 颗粒 晕影 效果","note":"说明颗粒与晕影是独立效果；当前LUT流程不尝试把空间纹理或边角位置效果烘焙进全局颜色函数。"},
+    {"id":"meitu-forest","title":"美图秀秀调色教程：暗调森系电影感滤镜","url":"https://show.meitu.com/detail-static/6656383261508402119?feed_id=6656383261508402119","publisher":"美图社区创作者","query":"森系 调色 暗调 美图","note":"真实的暗调森系用语与作者配方，说明森系并不必然等于高亮小清新；未读取图片。"},
+    {"id":"douyin-forest","title":"森系写真调色教程：高级感绿色","url":"https://jingxuan.douyin.com/m/video/7426739795382029631","publisher":"抖音精选创作者","query":"森系 写真 调色 高级感绿色","note":"公开创作者正文把整理绿色作为思路；不复制固定数值。"},
+    {"id":"douyin-french","title":"法式油画少女写真：室内花园棚拍攻略","url":"https://www.douyin.com/video/7663848669938740721","publisher":"抖音创作者","query":"法式油画 调色 摄影 暖杏 低饱和","note":"搜索可读正文，实时页面没有可读行；文中配色、布光、场景和特效并存，本目录只做颜色层面的产品解释。"},
+    {"id":"user-request","title":"本轮用户明确给出的风格方向","url":null,"publisher":"本项目需求","query":"美漫 配色","note":"用户要求覆盖美漫等模糊画风；不作为网上流行度证据。"}
+  ],
+  "platform_research": {
+    "xiaohongshu": "检索了日系调色、韩系奶油、森系调色、清冷调色等词。公开搜索页无法由当前工具稳定读取，搜索引擎没有返回可独立核对的稳定笔记正文；未登录、未抓取平台图片、未计算热度。",
+    "interpretation": "网上可核对的命名证据来自创作者本人教程、影像软件与相机官方说明；颜色倾向为本项目基于这些用语设计的提示词解释。目录顺序不是推荐排名。"
+  }
+}
